@@ -38,6 +38,7 @@ public class QLDV extends javax.swing.JFrame {
         jChucVu = new javax.swing.JMenuItem();
         jTTDoanVien = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jTimKiemDV = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jThoat = new javax.swing.JMenuItem();
 
@@ -112,6 +113,15 @@ public class QLDV extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Tìm kiếm");
+
+        jTimKiemDV.setText("Tìm kiếm đoàn viên");
+        jTimKiemDV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTimKiemDVActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jTimKiemDV);
+
         jMenuBar1.add(jMenu3);
 
         jMenu1.setText("Exit");
@@ -195,6 +205,12 @@ public class QLDV extends javax.swing.JFrame {
         new TTDoanVienGUI().setVisible(true);
     }//GEN-LAST:event_jTTDoanVienActionPerformed
 
+    private void jTimKiemDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTimKiemDVActionPerformed
+            setVisible(false);
+        dispose();
+        new TimKiemDVGUI().setVisible(true);
+    }//GEN-LAST:event_jTimKiemDVActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +259,7 @@ public class QLDV extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jTTDoanVien;
     private javax.swing.JMenuItem jThoat;
+    private javax.swing.JMenuItem jTimKiemDV;
     private javax.swing.JMenuItem jTinTuc;
     // End of variables declaration//GEN-END:variables
 }

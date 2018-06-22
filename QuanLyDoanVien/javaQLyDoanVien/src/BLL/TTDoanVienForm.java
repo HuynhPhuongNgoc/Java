@@ -5,7 +5,7 @@
  */
 package BLL;
 
-import DAL.TTDoanVieDAL;
+import DAL.TTDoanVienDAL;
 import DTO.TTDoanVien;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 public class TTDoanVienForm {
     public static ArrayList<TTDoanVien> TTDoanVienArray() throws SQLException{
-        return TTDoanVieDAL.getALL();
+        return TTDoanVienDAL.getALL();
 }
        public static DefaultTableModel TTDoanVienModel(){
         DefaultTableModel model = new DefaultTableModel();
@@ -56,14 +56,14 @@ public class TTDoanVienForm {
         }
     }
        public static int InsertTTDoanVien(String MaDV, String HoTenDV,String NgaySinh, String GioiTinh, String QueQuan, String Email,String SDT, String DanToc,String TonGiao, String NgayVaoDoan, String ChooHienNay, String MaChiDoan){
-            return TTDoanVieDAL.Insert(MaDV,HoTenDV,NgaySinh,GioiTinh,QueQuan,Email,SDT,DanToc,TonGiao,NgayVaoDoan,ChooHienNay,MaChiDoan);
+            return TTDoanVienDAL.Insert(MaDV,HoTenDV,NgaySinh,GioiTinh,QueQuan,Email,SDT,DanToc,TonGiao,NgayVaoDoan,ChooHienNay,MaChiDoan);
     }
     
     public static int UpdateTTDoanVien(String MaDV, String HoTenDV,String NgaySinh, String GioiTinh, String QueQuan, String Email,String SDT, String DanToc,String TonGiao, String NgayVaoDoan, String ChooHienNay, String MaChiDoan){
-            return  TTDoanVieDAL.Update(MaDV,HoTenDV,NgaySinh,GioiTinh,QueQuan,Email,SDT,DanToc,TonGiao,NgayVaoDoan,ChooHienNay,MaChiDoan);
+            return  TTDoanVienDAL.Update(MaDV,HoTenDV,NgaySinh,GioiTinh,QueQuan,Email,SDT,DanToc,TonGiao,NgayVaoDoan,ChooHienNay,MaChiDoan);
     }
     
     public static int DeleteTTDoanVien(String MaDV){
-            return  TTDoanVieDAL.Delete(MaDV);
+            return  TTDoanVienDAL.Delete(MaDV);
     }   
 }
