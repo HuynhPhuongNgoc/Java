@@ -39,6 +39,32 @@ public class TinTucDAL {
         }
         return tt;
     }
+    public static ArrayList<TinTuc> findTT( String TGD){
+        Connection con = DBConnect.moketnoi();
+        if(con != null){
+            try{
+                Statement stmt = con.createStatement();
+                String sql = "select * from TinTuc where ThoiGianDang = '"+ TGD +"'";
+                ResultSet rs = stmt.executeQuery(sql);
+                ArrayList<TinTuc> ds = new ArrayList<>();
+                while(true){
+                    if(!rs.next()) break;
+                    String MaTinTuc =rs.getString("MaTinTuc");
+                    String TenTinTuc=rs.getString("TenTinTuc");
+                    String NoiDungTT=rs.getString("NoiDungTT");
+                    String ThoiGianDang=rs.getString("ThoiGianDang");
+                    String NguoiDang=rs.getString("NguoiDang");
+                    TinTuc tintuc = new TinTuc(MaTinTuc, TenTinTuc,NoiDungTT,ThoiGianDang,NguoiDang);
+                    ds.add(tintuc);
+                }
+                con.close();
+                return ds;
+            }catch(SQLException ex){
+                return null;
+            }
+        }
+        return null;
+    }
      public static int Insert(String MaTinTuc, String TenTinTuc,String NoiDungTT, String ThoiGianDang, String NguoiDang){
         Connection con = DBConnect.moketnoi();
         if(con != null){

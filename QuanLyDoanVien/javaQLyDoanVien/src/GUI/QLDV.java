@@ -39,6 +39,7 @@ public class QLDV extends javax.swing.JFrame {
         jTTDoanVien = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jTimKiemDV = new javax.swing.JMenuItem();
+        jTimKiemTT = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jThoat = new javax.swing.JMenuItem();
 
@@ -122,6 +123,14 @@ public class QLDV extends javax.swing.JFrame {
         });
         jMenu3.add(jTimKiemDV);
 
+        jTimKiemTT.setText("Tìm kiếm tin tức");
+        jTimKiemTT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTimKiemTTActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jTimKiemTT);
+
         jMenuBar1.add(jMenu3);
 
         jMenu1.setText("Exit");
@@ -200,16 +209,22 @@ public class QLDV extends javax.swing.JFrame {
     }//GEN-LAST:event_jChucVuActionPerformed
 
     private void jTTDoanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTTDoanVienActionPerformed
-       setVisible(false);
+        setVisible(false);
         dispose();
         new TTDoanVienGUI().setVisible(true);
     }//GEN-LAST:event_jTTDoanVienActionPerformed
 
     private void jTimKiemDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTimKiemDVActionPerformed
-            setVisible(false);
+        setVisible(false);
         dispose();
         new TimKiemDVGUI().setVisible(true);
     }//GEN-LAST:event_jTimKiemDVActionPerformed
+
+    private void jTimKiemTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTimKiemTTActionPerformed
+        setVisible(false);
+        dispose();
+        new TimKiemTinTucGUI().setVisible(true);
+    }//GEN-LAST:event_jTimKiemTTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,6 +275,7 @@ public class QLDV extends javax.swing.JFrame {
     private javax.swing.JMenuItem jTTDoanVien;
     private javax.swing.JMenuItem jThoat;
     private javax.swing.JMenuItem jTimKiemDV;
+    private javax.swing.JMenuItem jTimKiemTT;
     private javax.swing.JMenuItem jTinTuc;
     // End of variables declaration//GEN-END:variables
 }
