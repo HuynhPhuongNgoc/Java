@@ -28,7 +28,7 @@ public class MH {
     }
     
     public String MH(String text) throws UnsupportedEncodingException, NoSuchAlgorithmException{
-        MessageDigest md = MessageDigest.getInstance("MH");
+        MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] mhhash = new byte[32];
         md.update(text.getBytes("iso-8859-1"), 0, text.length());
         mhhash = md.digest();

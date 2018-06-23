@@ -45,6 +45,8 @@ public class DangNhapGUI extends javax.swing.JFrame {
 
         jLabel2.setText("Mật khẩu");
 
+        txttk.setText("admin");
+
         txtmk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtmkActionPerformed(evt);
