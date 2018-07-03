@@ -35,9 +35,9 @@ public class DangNhapGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txttk = new javax.swing.JTextField();
-        txtmk = new javax.swing.JTextField();
         btnDangNhap = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
+        txtmk = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,12 +46,6 @@ public class DangNhapGUI extends javax.swing.JFrame {
         jLabel2.setText("Mật khẩu");
 
         txttk.setText("admin");
-
-        txtmk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtmkActionPerformed(evt);
-            }
-        });
 
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +73,7 @@ public class DangNhapGUI extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addGap(18, 18, 18)
                             .addComponent(txtmk))
@@ -109,10 +103,6 @@ public class DangNhapGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtmkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtmkActionPerformed
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         MH mh = new MH();
@@ -186,7 +176,7 @@ public class DangNhapGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnThoat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txtmk;
+    private javax.swing.JPasswordField txtmk;
     private javax.swing.JTextField txttk;
     // End of variables declaration//GEN-END:variables
 }

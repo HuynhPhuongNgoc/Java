@@ -11,7 +11,8 @@ package DTO;
  */
 public class TTDoanVien {
     private String MaDV;
-    private String HoTenDV;
+    private String HoDV;
+    private  String TenDV;
     private String NgaySinh;
     private String GioiTinh;
     private String QueQuan;
@@ -23,9 +24,10 @@ public class TTDoanVien {
     private String ChooHienNay;
  
     private String MaChiDoan;
-    public TTDoanVien(String mdv, String htdv,String ns, String gt, String qq, String email, String sdt, String dt, String tg, String nvd, String cohn, String mcd){
+    public TTDoanVien(String mdv, String hdv,String tdv,String ns, String gt, String qq, String email, String sdt, String dt, String tg, String nvd, String cohn, String mcd){
         this.MaDV=mdv;
-        this.HoTenDV=htdv;
+        this.HoDV=hdv;
+        this.TenDV=tdv;
         this. NgaySinh=ns;
         this.GioiTinh=gt;
         this.QueQuan=qq;
@@ -58,16 +60,7 @@ public class TTDoanVien {
     /**
      * @return the HoTenDV
      */
-    public String getHoTenDV() {
-        return HoTenDV;
-    }
-
-    /**
-     * @param HoTenDV the HoTenDV to set
-     */
-    public void setHoTenDV(String HoTenDV) {
-        this.HoTenDV = HoTenDV;
-    }
+  
 
     /**
      * @return the NgaySinh
@@ -209,5 +202,33 @@ public class TTDoanVien {
      */
     public void setMaChiDoan(String MaChiDoan) {
         this.MaChiDoan = MaChiDoan;
+    }
+
+    /**
+     * @return the HoDV
+     */
+    public String getHoDV() {
+        return HoDV;
+    }
+
+    /**
+     * @param HoDV the HoDV to set
+     */
+    public void setHoDV(String HoDV) {
+        this.HoDV = HoDV;
+    }
+
+    /**
+     * @return the TenDV
+     */
+    public String getTenDV() {
+        return TenDV;
+    }
+
+    /**
+     * @param TenDV the TenDV to set
+     */
+    public void setTenDV(String TenDV) {
+        this.TenDV = TenDV;
     }
 }

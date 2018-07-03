@@ -18,7 +18,8 @@ NguoiDang NVARCHAR(50) NOT NULL
 GO 
 CREATE TABLE DoanVienTN(
 MaDV VARCHAR(10) PRIMARY KEY NOT NULL,
-HoTenDV NVARCHAR(100) NOT NULL,
+HoDV NVARCHAR(50) NOT NULL,
+TenDV NVARCHAR(50) NOT NULL,
 NgaySinh VARCHAR(20) NOT NULL,
 GioiTinh NVARCHAR(10) NOT NULL,
 QueQuan NVARCHAR(100) NOT NULL,
@@ -28,7 +29,7 @@ DanToc NVARCHAR(50)NOT NULL,
 TonGiao NVARCHAR(50) NOT NULL,
 NgayVaoDoan VARCHAR(20) NOT NULL,
 ChooHienNay NVARCHAR(100) NOT NULL,
-HinhAnh NVARCHAR(200) NOT NULL,
+
 MaChiDoan VARCHAR(10) NOT NULL,
 CONSTRAINT dv_cd FOREIGN KEY(MaChiDoan) REFERENCES dbo.ChiDoan(MaChiDoan)
 )
@@ -90,12 +91,12 @@ VALUES  ( 'TT01' ,N'Thanh niên học cảm tình Đoàn' ,N'Hơn 100 sinh viên
 		( 'TT03' ,N'Đoàn viên dọn vệ sinh giảng đường G6' ,N'Ngày 01/04 Hơn 50 Đoàn viên tham gia dọn vệ sinh giảng đường G6' ,'04/01/2018' ,N'Nguyễn C')
 GO 
 INSERT dbo.DoanVienTN
-        ( MaDV ,HoTenDV ,NgaySinh ,GioiTinh ,QueQuan ,Email ,SDT ,DanToc ,TonGiao ,NgayVaoDoan ,ChooHienNay ,HinhAnh ,MaChiDoan)
-VALUES  ( 'DV01' ,N'Nguyễn Minh Triết' ,'09/08/1997' , N'Nam' ,N'Nha Trang' ,N'triet@gmail.com' ,'0123456789' ,N'Kinh' , N'Không' ,'26/03/2015' ,N'Nha Trang' ,N'A1' ,'7TH1'),
-		( 'DV02' ,N'Lê Thị Đào' ,'05/07/1996' , N'Nữ' ,N'Cam Ranh' , N'dao@gmail.com' ,'0987654321' ,N'Khơ me đỏ' , N'Phật giáo' ,'26/03/2014' ,N'Nha Trang' ,N'A2' ,'6HTTT'),
-		( 'DV03' ,N'Đào Bá Lộc' ,'04/06/1995' , N'Nam' ,N'Vạn Ninh' ,N'loc@gmail.com' ,'015314316' ,N'Thái' , N'Thiên Chúa giáo' ,'19/05/2015' ,N'Nha Trang' ,N'A3' ,'8TTQL'),
-		( 'DV04' ,N'Hiền Thục' ,'04/08/1998' , N'Nữ' ,N'Vạn Ninh' ,N'thuc@gmail.com' ,'01234756' ,N'Kinh' , N'Thiên Chúa giáo' ,'19/05/2015' ,N'Nha Trang' ,N'A4' ,'6HTTT'),
-		( 'DV05' ,N'Đàm Vĩnh ' ,'09/06/1997' , N'Nam' ,N'Ninh Hòa' ,N'vinh@gmail.com' ,'0397452' ,N'Kinh' , N'Không' ,'19/05/2015' ,N'Nha Trang' ,N'A5' ,'8TTQL')
+        ( MaDV ,HoDV,TenDV ,NgaySinh ,GioiTinh ,QueQuan ,Email ,SDT ,DanToc ,TonGiao ,NgayVaoDoan ,ChooHienNay ,MaChiDoan)
+VALUES  ( 'DV01' ,N'Nguyễn',N'Minh Triết' ,'09/08/1997' , N'Nam' ,N'Nha Trang' ,N'triet@gmail.com' ,'0123456789' ,N'Kinh' , N'Không' ,'26/03/2015' ,N'Nha Trang'  ,'7TH1'),
+		( 'DV02' ,N'Lê' ,N'Thị Đào' ,'05/07/1996' , N'Nữ' ,N'Cam Ranh' , N'dao@gmail.com' ,'0987654321' ,N'Khơ me đỏ' , N'Phật giáo' ,'26/03/2014' ,N'Nha Trang'  ,'6HTTT'),
+		( 'DV03' ,N'Đào',N' Bá Lộc' ,'04/06/1995' , N'Nam' ,N'Vạn Ninh' ,N'loc@gmail.com' ,'015314316' ,N'Thái' , N'Thiên Chúa giáo' ,'19/05/2015' ,N'Nha Trang' ,'8TTQL'),
+		( 'DV04' ,N'Nguyễn',N'Hiền Thục' ,'04/08/1998' , N'Nữ' ,N'Vạn Ninh' ,N'thuc@gmail.com' ,'01234756' ,N'Kinh' , N'Thiên Chúa giáo' ,'19/05/2015' ,N'Nha Trang'  ,'6HTTT'),
+		( 'DV05' ,N'Đàm' ,N'Vĩnh Hưng','09/06/1997' , N'Nam' ,N'Ninh Hòa' ,N'vinh@gmail.com' ,'0397452' ,N'Kinh' , N'Không' ,'19/05/2015' ,N'Nha Trang' ,'8TTQL')
 GO
 INSERT dbo.HoatDongPT
         ( MaHDPT ,NgayBatDau ,NgayKetThuc ,NoiDungHD ,DiaDiem ,MaDV)
@@ -125,7 +126,7 @@ INSERT dbo.ChucVu
 VALUES  ( 'CV01' , N'Bí thư' ,'02/03/2016' ,'30/06/2018','DV01'),
 		( 'CV02' , N'Phó bí thư' ,'01/05/2016' ,'11/06/2018','DV02'),
 		( 'CV03' , N'Bí thư' ,'02/03/2016' ,'11/11/2018','DV03')
-ALTER TABLE dbo.DoanVienTN DROP COLUMN HinhAnh
+
 GO
 CREATE TABLE ACCOUNT(
 	TAIKHOAN NVARCHAR(50) NOT NULL PRIMARY KEY,
@@ -176,3 +177,6 @@ AS
 BEGIN
 	SELECT * FROM ACCOUNT WHERE TAIKHOAN = @TAIKHOAN AND MATKHAU = @MATKHAU
 END
+
+
+    

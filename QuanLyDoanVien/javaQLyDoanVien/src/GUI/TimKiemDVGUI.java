@@ -32,21 +32,15 @@ public class TimKiemDVGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtmdv = new javax.swing.JTextField();
-        txtmcd = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jHienThi = new javax.swing.JTable();
         btnTimDV = new javax.swing.JButton();
         btnTimLai = new javax.swing.JButton();
         btnQuayLai = new javax.swing.JButton();
+        tcombo = new javax.swing.JComboBox<>();
+        txtFindValue = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Mã Đoàn viên");
-
-        jLabel2.setText("Mã Chi Đoàn");
 
         jHienThi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,6 +76,14 @@ public class TimKiemDVGUI extends javax.swing.JFrame {
             }
         });
 
+        tcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã  Đoàn viên", "Tên Đoàn viên", "Mã Chi đoàn" }));
+
+        txtFindValue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFindValueActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,42 +101,45 @@ public class TimKiemDVGUI extends javax.swing.JFrame {
                                 .addGap(56, 56, 56)
                                 .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtmdv)
-                                    .addComponent(txtmcd, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))))
+                                .addGap(19, 19, 19)
+                                .addComponent(tcombo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(txtFindValue, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap(52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtmdv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtmcd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
+                    .addComponent(tcombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFindValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(75, 75, 75)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTimDV)
                     .addComponent(btnTimLai)
                     .addComponent(btnQuayLai))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTimDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimDVActionPerformed
-        ArrayList<DTO.TTDoanVien> xuly =  TimTTDoanVienForm.FindDV(txtmdv.getText(), txtmcd.getText());
+    String valueCombobox=null;
+    if(tcombo.getSelectedItem().toString() == "Mã  Đoàn viên"){
+       valueCombobox = "MaDV";
+    } 
+    else if(tcombo.getSelectedItem().toString() == "Tên Đoàn viên"){
+       valueCombobox = "TenDV";
+    } 
+    else if(tcombo.getSelectedItem().toString() == "Mã Chi đoàn"){
+       valueCombobox = "MaChiDoan"; 
+    }
+        ArrayList<DTO.TTDoanVien> xuly =  TimTTDoanVienForm.FindDV(valueCombobox,txtFindValue.getText());
         
         try {
             model.getDataVector().removeAllElements();
@@ -142,7 +147,8 @@ public class TimKiemDVGUI extends javax.swing.JFrame {
             for(int i = 0 ; i <xuly.size();i++){
                 Vector<String> h = new Vector<>();
                 h.add(xuly.get(i).getMaDV());
-                h.add(xuly.get(i).getHoTenDV());
+                h.add(xuly.get(i).getHoDV());
+                h.add(xuly.get(i).getTenDV());
                 h.add(xuly.get(i).getNgaySinh());
                 h.add(xuly.get(i).getGioiTinh());
                 h.add(xuly.get(i).getQueQuan());
@@ -159,11 +165,12 @@ public class TimKiemDVGUI extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Lỗi:" +e);
         }
+        
     }//GEN-LAST:event_btnTimDVActionPerformed
 
     private void btnTimLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimLaiActionPerformed
-        txtmdv.setText("");
-        txtmcd.setText("");
+       txtFindValue.setText("");
+      
         
         model.getDataVector().removeAllElements();
     }//GEN-LAST:event_btnTimLaiActionPerformed
@@ -173,6 +180,10 @@ public class TimKiemDVGUI extends javax.swing.JFrame {
         dispose();
         new QLDV().setVisible(true);
     }//GEN-LAST:event_btnQuayLaiActionPerformed
+
+    private void txtFindValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFindValueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,10 +226,8 @@ public class TimKiemDVGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnTimDV;
     private javax.swing.JButton btnTimLai;
     private javax.swing.JTable jHienThi;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtmcd;
-    private javax.swing.JTextField txtmdv;
+    private javax.swing.JComboBox<String> tcombo;
+    private javax.swing.JTextField txtFindValue;
     // End of variables declaration//GEN-END:variables
 }

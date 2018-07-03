@@ -18,7 +18,8 @@ public class TTDoanVienForm {
        public static DefaultTableModel TTDoanVienModel(){
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Mã đoàn viên");
-        model.addColumn("Họ tên đoàn viên");
+        model.addColumn("Họ đoàn viên");
+        model.addColumn("Tên đoàn viên");
         model.addColumn("Ngày sinh");
         model.addColumn("Giới tính");
         model.addColumn("Quê quán");
@@ -35,7 +36,8 @@ public class TTDoanVienForm {
             for(int i = 0; i < TTDoanVienArray().size(); i++){
                 Vector<String> h = new Vector();
                 h.add(TTDoanVienArray().get(i).getMaDV());
-                h.add(TTDoanVienArray().get(i).getHoTenDV());
+                h.add(TTDoanVienArray().get(i).getHoDV());
+                h.add(TTDoanVienArray().get(i).getTenDV());
                 h.add(TTDoanVienArray().get(i).getNgaySinh());
                 h.add(TTDoanVienArray().get(i).getGioiTinh());
                 h.add(TTDoanVienArray().get(i).getQueQuan());
@@ -55,12 +57,12 @@ public class TTDoanVienForm {
             return null;
         }
     }
-       public static int InsertTTDoanVien(String MaDV, String HoTenDV,String NgaySinh, String GioiTinh, String QueQuan, String Email,String SDT, String DanToc,String TonGiao, String NgayVaoDoan, String ChooHienNay, String MaChiDoan){
-            return TTDoanVienDAL.Insert(MaDV,HoTenDV,NgaySinh,GioiTinh,QueQuan,Email,SDT,DanToc,TonGiao,NgayVaoDoan,ChooHienNay,MaChiDoan);
+       public static int InsertTTDoanVien(String MaDV, String HoDV,String TenDV,String NgaySinh, String GioiTinh, String QueQuan, String Email,String SDT, String DanToc,String TonGiao, String NgayVaoDoan, String ChooHienNay, String MaChiDoan){
+            return TTDoanVienDAL.Insert(MaDV,HoDV,TenDV,NgaySinh,GioiTinh,QueQuan,Email,SDT,DanToc,TonGiao,NgayVaoDoan,ChooHienNay,MaChiDoan);
     }
     
-    public static int UpdateTTDoanVien(String MaDV, String HoTenDV,String NgaySinh, String GioiTinh, String QueQuan, String Email,String SDT, String DanToc,String TonGiao, String NgayVaoDoan, String ChooHienNay, String MaChiDoan){
-            return  TTDoanVienDAL.Update(MaDV,HoTenDV,NgaySinh,GioiTinh,QueQuan,Email,SDT,DanToc,TonGiao,NgayVaoDoan,ChooHienNay,MaChiDoan);
+    public static int UpdateTTDoanVien(String MaDV, String HoDV,String TenDV,String NgaySinh, String GioiTinh, String QueQuan, String Email,String SDT, String DanToc,String TonGiao, String NgayVaoDoan, String ChooHienNay, String MaChiDoan){
+            return  TTDoanVienDAL.Update(MaDV,HoDV,TenDV,NgaySinh,GioiTinh,QueQuan,Email,SDT,DanToc,TonGiao,NgayVaoDoan,ChooHienNay,MaChiDoan);
     }
     
     public static int DeleteTTDoanVien(String MaDV){
